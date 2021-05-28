@@ -10,9 +10,10 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
-        function button1Pressed() {
+
+        $().ready(function () {
             doSelect();
-        }
+        });
 
         async function doSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
@@ -22,7 +23,7 @@
             html = html + '<ul>';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.id + ", " + object.name + ', ' + object.time + '</li>';
+                html = html + '<li>' + object.id + ", " + object.name + ', ' + object.tweet + '</li>';
             }
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
@@ -48,7 +49,6 @@
 
 <body>
     <h1>Tweets</h1>
-    <button onclick="button1Pressed()">表示</button>
     <br>
     名前:<input id="tf1" value="名無し" type="textfield">
     <br>
