@@ -13,7 +13,12 @@
 
         $().ready(function () {
             doSelect();
+            tweetUpdate();
         });
+
+        function tweetUpdate() {
+            setInterval(doSelect, 2000);
+        }
 
         async function doSelect() {
             var sql = 'select * from Tweets order by time desc limit 20';
@@ -54,6 +59,7 @@
     <br>
     tweet:<input id="tf2" type="textfield">
     <button onclick="button2Pressed()">tweet</button>
+    <p id='result2'></p>
     <br>
     <p id="result"></p>
 </body>
