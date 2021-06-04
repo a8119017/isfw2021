@@ -10,6 +10,20 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+
+        function button1Pressed() {
+            execDelete();
+            execSelect();
+        }
+
+        async function execDelete() {
+            var userid = document.getElementById('tf1').value;
+            var sql = `delete from Users where id="${userid}";`;
+            var objects = await osql.connect(sql);
+
+            document.getElementById('result2').innerHTML = userid + 'を削除しました';
+
+        }
         $(document).ready(function () {
             execSelect();
         });
@@ -31,13 +45,19 @@
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
+
     </script>
 
 </head>
 
 <body>
     <h1>Users</h1>
+    <hr>
+    ID:<input id="tf1" onclick="button1Pressed()">
+    <button onclick="button1Pressed()">削除</button>
+    <hr>
     <p id="result">xxxx</p>
+    <p id='result2'></p>
 </body>
 
 </html>
